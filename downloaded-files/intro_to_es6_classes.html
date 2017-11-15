@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Intro to JS classes</title>
+</head>
+<body>
+    <script>
+        class Mammal {
+            constructor(){
+                this.breast = 2
+                this.hair = true
+                this.neocortex = true
+                this.middleEarBone = 3
+            }
+        }
+
+        class Dog extends Mammal {
+            constructor(props){
+                super()
+                this.name = props.name
+                this.age = props.age
+                this.country = props.country
+                console.log("muehhhh")
+            }
+            bark(){
+                if (this.country == "Thailand"){
+                    console.log("hong")
+                } else if (this.country == "Germany"){
+                    console.log("wao")
+                } else if(this.name == "Snoop"){
+                    console.log("baowowow yeepioh yeepiyay")
+                } else {
+                    console.log('woof')
+                }
+            }
+        }
+        var tobi = new Dog({name: "Tobias", age: 0, country: "Germany"})
+        var looki = new Dog({name: "Looklen", age: 0, country: "Thailand"})
+        var paws = new Dog({name: "Pawston", age: 0, country: "USA"})
+        var snoopDogg = new Dog({name: "Snoop", age: 40, country: "USA"})
+
+        tobi.bark()
+        looki.bark()
+        paws.bark()
+        snoopDogg.bark()
+
+        class Person {
+            constructor(props){
+                this.name = props.name
+                this.age = props.age
+                this.country = props.country
+                console.log("muehhhh")
+            }
+            bark(){
+                if (this.country == "France"){
+                    console.log("Salut")
+                } else if (this.country == "Spain"){
+                    console.log("Hola")
+                } else {
+                    console.log('Hello')
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WDI SM 51 Chat History</title>
+  <style>
+    .message {
+      margin-bottom: 50px;
+      border: 1px solid black;
+      padding: 5px;
+      border-radius: 10px;
+    }
+    
+    .user {
+      display: inline;
+      color: rgb(9, 103, 192);
+    }
+
+    .message .text {
+      display: inline;
+    }
+  </style>
+</head>
+<body>
+  <h1>WDI 51 Chat History</h1>
+  <% messages.forEach(function(message) { %>
+    <div class="message">
+      <h5 class="date-time"><%= message.ts ? moment.unix(Number(message.ts)).format('MMMM Do YYYY, h:mm a') : "" %></h5>
+      <h5 class="user"><%= users[message.user] %></h5>
+      <!-- Check message type -->
+      <p class="text"><%= message.text %></p>
+    </div>
+  <% }) %>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "chat-history",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "download-file": "^0.1.5",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "fs": "0.0.1-security",
+    "jsonfile": "^4.0.0",
+    "moment": "^2.19.2",
+    "request": "^2.83.0",
+    "sync-request": "^4.1.0"
+  }
+}

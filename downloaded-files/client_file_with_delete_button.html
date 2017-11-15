@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+		<title>Todo SPA</title>
+		<style>
+			.completed {
+				text-decoration: line-through;
+			}
+		</style>
+</head>
+<body>
+    <h1>My Todo List</h1>
+    <button id="load-items">Load Items</button>
+
+    <form id="new-task-form">
+        <input id="new-task-text" type="text">
+        <input type="submit">
+    </form>
+
+    <ul id="items-list"></ul>
+    <script>
+        $loadItems = $('#load-items')
+        $itemsList = $('#items-list')
+        $newTaskForm = $('#new-task-form')
+        $newTaskText = $('#new-task-text')
+
+        $loadItems.on('click', (evt)=>{
+            console.log('Load the items from the server')
+            $.ajax({url: '/items', method: 'get'})
+             .done((res)=>{
+                 populateItemsList(res)
+             })
+        })
+
+        $newTaskForm.on('submit', (evt)=>{
+            evt.preventDefault() //prevent reload
+            var newItem = {completed: false} //item to be sent
+            newItem.task = $newTaskText.val()
+            console.log(newItem)
+            $.ajax({
+                url: '/items', method: 'post',
+                data: JSON.stringify(newItem),
+                contentType: 'application/json'
+            })
+            .done((res)=>{  //all the items including what we just posted
+                populateItemsList(res)
+            })
+        })
+
+        function populateItemsList(items){
+            $itemsList.html('')
+            items.forEach(item => {
+								var theLi = $('<li>').text(item.task)
+								if(item.completed) theLi.addClass('completed')
+
+								var toggleCompletedButton = $('<button>').text('✔️')
+								theLi.append(toggleCompletedButton)
+
+								var deleteButton = $('<button>').text('X').addClass('delete')
+								theLi.append(deleteButton)
+                $itemsList.append(theLi)
+            })
+				}
+
+				$('body').on('click', '.delete', function() {
+					var item = $(this).parent()
+					var itemIndex = $('li').index(item)
+					$.ajax({url: `/items/${itemIndex}`, method: 'delete'})
+					.done((res) => {
+						populateItemsList(res)
+					})
+				})
+
+				// CLIENT-SIDE:
+				// an event listener for all toggle buttons
+				// similar to delete button, we need to get the index of the item
+				// we need to send an AJAX patch request
+				// when we receive response, re populate list
+
+				// SERVER-SIDE:
+				// A route to handle patch requests for '/items/:index'
+				// go into the todoItems array at the index in params, and
+				// toggle that item's 'completed' value
+				// send back all of the items in the list
+
+    </script>
+</body>
+</html>

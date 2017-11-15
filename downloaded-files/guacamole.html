@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guacamole</title>
+    <style>
+    .hole {
+        background: tomato;
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        border-radius: 50%;
+        vertical-align: top;
+        text-align: center;
+    }
+    .grid {
+        width: 330px;
+        background: lime;
+    }
+    img {width: 100px;}
+    </style>
+</head>
+<body>
+   <h1>Guacamole</h1> 
+   <div class="grid">
+       <div class="hole"></div>
+       <div class="hole"></div>
+       <div class="hole"></div>
+       <div class="hole"></div>
+       <div class="hole"></div>
+       <div class="hole"></div>
+       <div class="hole"><img src="mole.png" alt=""></div>
+       <div class="hole"></div>
+       <div class="hole"></div>
+   </div>
+   <script>
+    var holes = document.querySelectorAll('.hole')
+    var theMoleIMG = '<img src="mole.png" alt="">'
+       
+    function randomInt(n){
+        return Math.floor(Math.random()*n)
+    }
+
+    function checkMole(){
+        if(this.innerHTML === ''){
+            console.log('Mole is NOT here')
+        } else {
+            console.log('Mole IS here')
+                this.innerHTML = '' // Remove the mole
+                holes[ randomInt(9) ].innerHTML = theMoleIMG // Put a mole in a random hole
+           }
+       }
+    holes[0].addEventListener('click', checkMole)
+    holes[1].addEventListener('click', checkMole)
+    holes[2].addEventListener('click', checkMole)
+    holes[3].addEventListener('click', checkMole)
+    holes[4].addEventListener('click', checkMole)
+    holes[5].addEventListener('click', checkMole)
+    holes[6].addEventListener('click', checkMole)
+    holes[7].addEventListener('click', checkMole)
+    holes[8].addEventListener('click', checkMole)
+
+    var counter = 0
+    function fn(){
+        console.log('dude')
+        counter = counter + 1
+        if (counter >= 10){
+            clearInterval( theIntervalId )
+        }
+    }
+    var theIntervalId = setInterval(fn, 1000)
+   </script>
+</body>
+</html>

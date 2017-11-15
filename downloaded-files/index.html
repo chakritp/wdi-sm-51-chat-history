@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object Constructors</title>
+</head>
+<body>
+<script>
+    function createDog(nombre, colour, theBreed, theAge){
+        var theDog = {}
+        theDog.name = nombre
+        theDog.color = colour
+        theDog.breed = theBreed
+        theDog.age = theAge || 'old'
+        theDog.bark = function(){
+            if(this.breed === 'chihuahua'){
+                console.log('woof woof woof woof woof')
+            }
+            else {
+                console.log('woof woof')
+            }
+        }
+        return theDog
+    }
+</script>
+<script>
+    function Dog(theName, theColor, theBreed){
+        this.name = theName
+        this.color = theColor
+        this.breed = theBreed
+    }
+
+    Dog.prototype.bark = function(){
+        if (this.breed === 'rapper'){
+            console.log("I don't bark that's my mark I'm a dogg not a dog")
+        } else {
+            console.log('woof')
+        }
+    }
+
+    Dog.prototype.sayName = function(){
+        console.log('hellow hellow')
+    }
+
+    var jDogg = new Dog('jDogg', 'brown', 'rapper')
+    var snoopDogg = new Dog('snoopdoggydog', 'black', 'rapper')
+    var littleJuan = new Dog('juanito', 'beige', 'chihuahua')
+    jDogg.bark()
+    littleJuan.bark()
+    snoopDogg.sayName()
+</script>
+<script>
+
+</script>
+</body>
+</html>

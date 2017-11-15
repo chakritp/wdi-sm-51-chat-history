@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sets</title>
+</head>
+<body>
+<script>
+    class _Set{
+        constructor(){
+            this.storage = []
+        }
+        add(thing){
+            if (!this.storage.includes(thing))
+                this.storage.push(thing)
+        }
+        union(otherSet){
+            var result = new _Set()
+            this.storage.forEach(el => result.add(el))
+            otherSet.storage.forEach(el => result.add(el))
+            return result
+        }
+        intersection(otherSet){
+            var result = new _Set()
+            this.storage.forEach(el => {
+                if (otherSet.storage.includes(el))
+                    result.add(el)
+            })
+            return result
+        }
+    }
+    fa = new _Set()
+    fa.add('rabbit')
+    fa.add('cow')
+    fa.add('sheep')
+
+    rodents = new _Set()
+    rodents.add('rabbit')
+    rodents.add('cui')
+
+    console.log(fa)
+    console.log(rodents)
+    var faUrodents = fa.union(rodents)
+    console.log(faUrodents)
+    var faIntersectrodents = fa.intersection(rodents)
+    console.log(faIntersectrodents)
+
+
+</script>
+</body>
+</html>

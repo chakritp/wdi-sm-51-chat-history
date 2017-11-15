@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animals App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+</head>
+<body>
+    <button>Panther</button>
+    <script>
+        var globalAnimals
+
+        function preload() {
+            httpGet('/animals', "json", function(response){
+                globalAnimals = response
+            })
+        }
+
+        function setup() {
+            createCanvas(400, 400) // width, height
+            background("lime")
+        }
+
+        function draw() {
+            if (!globalAnimals){ return }
+            fill(globalAnimals[1]["color"])
+            rect(globalAnimals[1].x, globalAnimals[1].y, globalAnimals[1].w, globalAnimals[1].h)
+        }
+
+        function mouseDragged(){ // mouseMoved also works similarly        
+        }
+
+        function mousePressed(){
+        }
+    </script>
+</body>
+</html>
