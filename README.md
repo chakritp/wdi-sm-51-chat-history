@@ -1,5 +1,5 @@
 # GA-WDI-SM-51 Chat History
-The slack chat history of the WDI 51 cohort. All the files that were uploaded on the slack channel can be found in the `downloaded-files` folder of this repo. The raw JSON file of the chat history is located in `wdi-sm-51_history.json`.
+The slack chat history of the WDI 51 cohort. All the files (code snippets, pdfs, images, etc.) that were uploaded on the slack channel can be found in the `downloaded-files` folder of this repo. The raw JSON file of the chat history is located in `wdi-sm-51_history.json`.
 
 ## Installation Instructions
 1. Fork or clone this repo and run `npm install` in the root directory
