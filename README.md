@@ -5,3 +5,5 @@ The slack chat history of the WDI 51 cohort. All the files that were uploaded on
 1. Fork or clone this repo and run `npm install` in the root directory
 2. Run `nodemon`
 3. View the chat history in your browser at `http://localhost:3000`
+
+Note: The messages are ordered from most recent to least recent.
